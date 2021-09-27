@@ -1,4 +1,3 @@
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { useRouter } from 'next/router'
 
 

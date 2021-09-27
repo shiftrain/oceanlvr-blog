@@ -1,7 +1,7 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { useRouter } from 'next/router'
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
-import matter from 'gray-matter'
+import { MDXRemote } from 'next-mdx-remote'
+import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { getSourceBySlug, getSources, getAllFilesFrontMatter } from '../../lib/posts'
 import Heading from '../../components/Heading'
 import { formatSlug } from '../../lib/mdx'
@@ -68,8 +68,10 @@ const Posts = ({ post, prev, next }: Props) => {
   const { id } = router.query
   return (
     <div className="wrapper">
-      <div>slug: {id}</div>
-      <div>frontMatter: {frontMatter.title}</div>
+      <div>slug: {Array.isArray(id) ? id.join('/') : id}</div>
+      <div> frontMatter: {frontMatter.title}</div>
+      <div>prev - {prev?.id}</div>
+      <div>next - {next?.id}</div>
       <div>mdxSource:</div>
       <MDXRemote {...mdxSource} components={components} />
     </div>
