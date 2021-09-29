@@ -4,6 +4,7 @@ import Logo from '../data/header.jpeg'
 import siteMetadata from '../data/siteMetadata'
 import headerNavLinks from '../data/headerNavLinks'
 import ThemeChanger from './ThemeChanger'
+import MobileNavBar from './MobileNavBar'
 
 const NavBar = () => {
   return (
@@ -31,8 +32,9 @@ const NavBar = () => {
               {link.title}
             </Link>
           ))}
-          <ThemeChanger />
         </div>
+        <ThemeChanger />
+        <MobileNavBar />
       </div>
     </div>
   )
