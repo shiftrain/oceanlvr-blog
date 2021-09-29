@@ -1,4 +1,5 @@
 import NavBar from './NavBar'
+import Footer from './Footer'
 import SectionContainer from './SectionContainer'
 
 type Prop = {
@@ -11,6 +12,7 @@ const LayoutWrapper = ({ children }: Prop) => {
       <div>
         <NavBar />
         <main className="mb-auto">{children}</main>
+        <Footer />
       </div>
     </SectionContainer >
   )

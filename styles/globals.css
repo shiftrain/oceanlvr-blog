@@ -2,15 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  h1 {
-    @apply text-2xl;
-  }
 
-  h2 {
-    @apply text-xl;
-  }
-
+html {
+  scroll-behavior: smooth;
 }
 
 html,

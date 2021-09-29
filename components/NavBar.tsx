@@ -1,8 +1,8 @@
-import Link from '../components/Link'
+import Link from '@/components/Link'
 import Image from 'next/image'
-import Logo from '../data/header.jpeg'
-import siteMetadata from '../data/siteMetadata'
-import headerNavLinks from '../data/headerNavLinks'
+import Logo from '@/data/header.jpeg'
+import siteMetadata from '@/data/siteMetadata'
+import headerNavLinks from '@/data/headerNavLinks'
 import ThemeChanger from './ThemeChanger'
 import MobileNavBar from './MobileNavBar'
 

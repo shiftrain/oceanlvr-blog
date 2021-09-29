@@ -1,5 +1,5 @@
 import { useState } from "react";
-import headerNavLinks from "../data/headerNavLinks";
+import headerNavLinks from "@/data/headerNavLinks";
 import Link from './Link'
 
 const MobileNavBar = () => {
@@ -43,7 +43,7 @@ const MobileNavBar = () => {
         </svg>
       </button>
       <div className={`fixed w-full h-full top-24 right-0 bg-gray-200 dark:bg-gray-800 opacity-90 z-10 transform duration-300 ease-in-out ${navShow ? 'translate-x-0' : 'translate-x-full'}`}>
-        <div id="Ftt" className="fixed h-full w-full" onClick={onToggleNav}>
+        <div className="fixed h-full w-full" onClick={onToggleNav}>
         </div>
         <div className="fixed">
           {headerNavLinks.map((link) => (

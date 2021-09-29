@@ -2,9 +2,9 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import { useRouter } from 'next/router'
 import { MDXRemote } from 'next-mdx-remote'
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
-import { getSourceBySlug, getSources, getAllFilesFrontMatter } from '../../lib/posts'
-import Heading from '../../components/Heading'
-import { formatSlug } from '../../lib/mdx'
+import { getSourceBySlug, getSources, getAllFilesFrontMatter } from '@/lib/posts'
+import Heading from '@/components/Heading'
+import { formatSlug } from '@/lib/mdx'
 
 type ContextParams = {
   id: string[]

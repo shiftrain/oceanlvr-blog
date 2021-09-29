@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tailwindcss/forms": "^0.3.4",
+    "@tailwindcss/typography": "^0.4.1",
     "add": "^2.0.6",
     "gray-matter": "^4.0.3",
     "next": "11.1.2",

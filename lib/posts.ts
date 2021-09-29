@@ -1,8 +1,8 @@
 
 import fs from 'fs'
 import { join } from 'path'
-import getAllFilesRecursively from '../lib/files'
-import { formatSlug } from '../lib/mdx'
+import getAllFilesRecursively from './files'
+import { formatSlug } from './mdx'
 import matter from 'gray-matter'
 import { serialize } from 'next-mdx-remote/serialize'
 
