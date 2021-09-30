@@ -3,12 +3,36 @@ import fs from 'fs'
 import { join } from 'path'
 import getAllFilesRecursively from './files'
 import { formatSlug } from './mdx'
-import matter from 'gray-matter'
+import matter, { stringify } from 'gray-matter'
 import { serialize } from 'next-mdx-remote/serialize'
 
 
 const root: string = process.cwd()
 const dataDirectory = join(root, 'data')
+
+export async function getStaticPage(type: string) {
+  const mdxPath = join(dataDirectory, `${type}.mdx`)
+  const mdPath = join(dataDirectory, `${type}.md`)
+  const source = fs.existsSync(mdxPath)
+    ? fs.readFileSync(mdxPath, 'utf8')
+    : fs.readFileSync(mdPath, 'utf8')
+  
+  const { data, content } = matter(source)
+  const mdxSource = await serialize(content, {
+    scope: data
+  })
+
+  return {
+    mdxSource,
+    frontMatter: data,
+  }
+}
+
+export async function getStaticPages() {
+  const prefixPaths = dataDirectory
+  const files = fs.readdirSync(prefixPaths).filter((f: string) => f.endsWith('mdx') || f.endsWith('md'))
+  return files
+}
 
 export async function getSourceBySlug(type: string, slug: string) {
   const mdxPath = join(dataDirectory, type, `${slug}.mdx`)

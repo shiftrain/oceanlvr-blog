@@ -7,6 +7,9 @@ const headerNavLinks = [{
 }, {
   href: '/about',
   title: 'About',
+}, {
+  href: 'https://www.github.com/oceanlvr',
+  title: 'Github'
 }]
 
 export default headerNavLinks;
