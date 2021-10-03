@@ -8,9 +8,7 @@ import Image from 'next/image'
 import CustomLink from '@/components/Link'
 import PostLayout from '@/layouts/PoastLayout'
 
-type ContextParams = {
-  id: string[]
-}
+type ContextParams = {}
 
 interface Post {
   mdxSource: MDXRemoteSerializeResult
@@ -27,7 +25,7 @@ interface Props {
     [key: string]: any;
     id: string;
   }
-  id: string
+  slug: string
 }
 
 const MDXComponents = {
@@ -35,15 +33,15 @@ const MDXComponents = {
   a: CustomLink,
 }
 
-export const getStaticProps: GetStaticProps<MDXRemoteSerializeResult, ContextParams> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<MDXRemoteSerializeResult, ContextParams> = async () => {
   const allPosts = await getAllFilesFrontMatter('_post')
-  if (!params) {
+  if (!allPosts || (Array.isArray(allPosts) && !allPosts.length)) {
     return {
       notFound: true
     }
   }
-  const postIndex = allPosts.findIndex((post) => formatSlug(post.id) === params.id.join('/'))
 
+  const postIndex = 0
   const prev = postIndex + 1 <= allPosts.length - 1 ? allPosts[postIndex + 1] : null
   const next = postIndex - 1 >= 0 ? allPosts[postIndex - 1] : null
   const post = await getSourceBySlug('_post', allPosts[postIndex].id)
@@ -55,17 +53,6 @@ export const getStaticProps: GetStaticProps<MDXRemoteSerializeResult, ContextPar
       compiledSource: post.mdxSource.compiledSource
     }
   }
-}
-
-export const getStaticPaths: GetStaticPaths<ContextParams> = async () => {
-  const posts = getSources('_post')
-  const paths = posts.map(post => ({
-    params: { id: formatSlug(post).split('/') },
-  }))
-  return {
-    paths,
-    fallback: false,
-  };
 }
 
 const Posts = ({ post, prev, next }: Props) => {
@@ -87,4 +74,3 @@ const Posts = ({ post, prev, next }: Props) => {
 }
 
 export default Posts
-
