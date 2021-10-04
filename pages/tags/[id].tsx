@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 
 
-const Tags = ({  }) => {
+const Tags = ({ }) => {
   const router = useRouter()
   const { id } = router.query
   return (

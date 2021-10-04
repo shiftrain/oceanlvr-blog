@@ -24,8 +24,9 @@ export const getStaticProps: GetStaticProps<MDXRemoteSerializeResult, ContextPar
 
 
 function About({ about }: Props) {
-  const { frontMatter, mdxSource } = about
-  return <MDXRemote {...mdxSource} />
+  const { mdxSource } = about
+  return <div className="pt-10 pb-8 prose dark:prose-dark"><MDXRemote {...mdxSource} /></div>
+
 
 }
 

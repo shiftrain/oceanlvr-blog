@@ -1,3 +1,9 @@
+import ListLayout from '@/layouts/ListLayout'
+
 export default function Blog() {
-  return <div>post index</div>
+  return (
+    <div>
+      {/* <ListLayout></ListLayout> */}
+    </div>
+  )
 }

@@ -1,61 +1,25 @@
 import { GetStaticProps } from 'next'
-import { MDXRemote } from 'next-mdx-remote'
-import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
-import { getSourceBySlug, getAllFilesFrontMatter } from '@/lib/resource'
-import Image from 'next/image'
-import CustomLink from '@/components/Link'
-import PostLayout from '@/layouts/PostLayout'
+import { getAllFilesFrontMatter } from '@/lib/resource'
+import ListLayout from '@/layouts/ListLayout'
 
-type ContextParams = {}
-
-interface Post {
-  mdxSource: MDXRemoteSerializeResult
-  frontMatter: Record<string, unknown>
+type Props = {
+  postsFrontMatter: Record<string, unknown>[]
 }
 
-interface Props {
-  post: Post
-  prev: {
-    [key: string]: any;
-    id: string;
-  }
-  next: {
-    [key: string]: any;
-    id: string;
-  }
-}
-
-const MDXComponents = {
-  Image,
-  a: CustomLink,
-}
-
-export const getStaticProps: GetStaticProps<MDXRemoteSerializeResult, ContextParams> = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const allPosts = await getAllFilesFrontMatter('_post')
-  const postIndex = 0
-  const prev = postIndex + 1 <= allPosts.length - 1 ? allPosts[postIndex + 1] : null
-  const next = postIndex - 1 >= 0 ? allPosts[postIndex - 1] : null
-  const post = await getSourceBySlug('_post', allPosts[postIndex].id)
   return {
     props: {
-      post,
-      prev,
-      next,
-      compiledSource: post.mdxSource.compiledSource
+      postsFrontMatter: allPosts,
     }
   }
 }
 
-const Posts = ({ post, prev, next }: Props) => {
-  const { frontMatter, mdxSource } = post
+const Posts = ({ postsFrontMatter }: Props) => {
   return (
     <div className="wrapper">
-      <div>prev - {prev?.id}</div>
-      <div>next - {next?.id}</div>
-      <div>mdxSource:</div>
-      <PostLayout frontMatter={frontMatter} prev={prev} next={next}>
-        <MDXRemote {...mdxSource} components={MDXComponents} />
-      </PostLayout>
+      <h1 className="mb-8 text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">All Posts</h1>
+      <ListLayout postsFrontMatter={postsFrontMatter} />
     </div>
   )
 }

@@ -1,5 +1,4 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
-import { useRouter } from 'next/router'
 import { MDXRemote } from 'next-mdx-remote'
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { getSourceBySlug, getSources, getAllFilesFrontMatter } from '@/lib/resource'
@@ -70,8 +69,6 @@ export const getStaticPaths: GetStaticPaths<ContextParams> = async () => {
 
 const Posts = ({ post, prev, next }: Props) => {
   const { frontMatter, mdxSource } = post
-  const router = useRouter()
-  const { id } = router.query
   return (
     <PostLayout frontMatter={frontMatter} prev={prev} next={next}>
       <MDXRemote {...mdxSource} components={MDXComponents} />

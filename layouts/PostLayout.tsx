@@ -14,6 +14,7 @@ interface Props {
     id: string
   }
 }
+
 export default function PostLayout({ children, frontMatter, prev, next }: Props) {
   const { date, title, tags } = frontMatter
 
@@ -26,7 +27,7 @@ export default function PostLayout({ children, frontMatter, prev, next }: Props)
           {/* @ts-ignore */}
           <Time createAt={date} />
         </div>
-        <div>{children}</div>
+        <div className="pt-10 pb-8 prose dark:prose-dark">{children}</div>
       </>
     </SectionContainer>
   )
