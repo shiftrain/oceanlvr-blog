@@ -18,9 +18,7 @@ export async function getStaticPage(type: string) {
     : fs.readFileSync(mdPath, 'utf8')
 
   const { data, content } = matter(source)
-  const mdxSource = await serialize(content, {
-    scope: data
-  })
+  const mdxSource = await serialize(content)
 
   return {
     mdxSource,
@@ -42,9 +40,7 @@ export async function getSourceBySlug(type: string, slug: string) {
     : fs.readFileSync(mdPath, 'utf8')
   const { data, content } = matter(source)
 
-  const mdxSource = await serialize(content, {
-    scope: data
-  })
+  const mdxSource = await serialize(content)
 
   return {
     mdxSource,

@@ -6,7 +6,7 @@ import { getSourceBySlug, getSources, getAllFilesFrontMatter } from '@/lib/resou
 import { formatSlug } from '@/lib/mdx'
 import Image from 'next/image'
 import CustomLink from '@/components/Link'
-import PostLayout from '@/layouts/PoastLayout'
+import PostLayout from '@/layouts/PostLayout'
 
 type ContextParams = {
   id: string[]
@@ -73,16 +73,9 @@ const Posts = ({ post, prev, next }: Props) => {
   const router = useRouter()
   const { id } = router.query
   return (
-    <div className="wrapper">
-      <div>slug: {Array.isArray(id) ? id.join('/') : id}</div>
-      <div> frontMatter: {frontMatter.title}</div>
-      <div>prev - {prev?.id}</div>
-      <div>next - {next?.id}</div>
-      <div>mdxSource:</div>
-      <PostLayout frontMatter={frontMatter} prev={prev} next={next}>
-        <MDXRemote {...mdxSource} components={MDXComponents} />
-      </PostLayout>
-    </div>
+    <PostLayout frontMatter={frontMatter} prev={prev} next={next}>
+      <MDXRemote {...mdxSource} components={MDXComponents} />
+    </PostLayout>
   )
 }
 
