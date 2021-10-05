@@ -9,7 +9,7 @@ type Prop = {
 const LayoutWrapper = ({ children }: Prop) => {
   return (
     <SectionContainer>
-      <div>
+      <div className="h-screen flex flex-col">
         <NavBar />
         <main className="mb-auto">{children}</main>
         <Footer />

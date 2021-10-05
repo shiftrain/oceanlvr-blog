@@ -8,7 +8,7 @@ import MobileNavBar from './MobileNavBar'
 
 const NavBar = () => {
   return (
-    <div className="flex-row flex items-center justify-between py-10">
+    <header className="flex-row flex items-center justify-between py-10">
       <div>
         <Link href="/">
           <div className="flex flex-row items-center justify-between">
@@ -36,7 +36,7 @@ const NavBar = () => {
         <ThemeChanger />
         <MobileNavBar />
       </div>
-    </div>
+    </header>
   )
 }
 
