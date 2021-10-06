@@ -1,6 +1,7 @@
 import Time from '@/components/Time'
 import SectionContainer from '@/components/SectionContainer'
 import PageTitle from '@/components/PageTitle'
+import TagList from '@/components/TagList'
 
 interface Props {
   frontMatter: Record<string, unknown>
@@ -26,8 +27,9 @@ export default function PostLayout({ children, frontMatter, prev, next }: Props)
           <PageTitle>{title}</PageTitle>
           {/* @ts-ignore */}
           <Time createAt={date} />
+          <TagList tags={tags as string[]} />
         </div>
-        <div className="pt-10 pb-8 prose dark:prose-dark">{children}</div>
+        <div className="pt-10 pb-8 xl:max-w-5xl prose dark:prose-dark">{children}</div>
       </>
     </SectionContainer>
   )

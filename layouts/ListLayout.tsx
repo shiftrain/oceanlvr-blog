@@ -1,4 +1,6 @@
 import Link from '@/components/Link'
+import TagList from '@/components/TagList'
+
 type Props = {
   postsFrontMatter: Record<string, unknown>[]
 }
@@ -12,16 +14,7 @@ export default function ListLayout({ postsFrontMatter }: Props) {
             {/* @ts-ignore */}
             <Link key={post.title} className="text-gray-900 dark:text-gray-100" href={`/posts/${post.id}`}>{post.title}</Link>
           </h2>
-          <div>
-            {/* @ts-ignore */}
-            {post.tag?.map((e, idx) => (
-              <>
-                <Link href={`/tags/${e}`} key={`${post.id as string}-${e}`} className="leading-6 mb-2 text-base font-medium blue-link">{e}</Link>
-                {/* @ts-ignore */}
-                {idx !== post.tag?.length - 1 && <span className="pr-2">,</span>}
-              </>
-            ))}
-          </div>
+          <TagList tags={post.tag as string[]} />
           {/* @ts-ignore */}
           <div key={post.title} className="text-base leading-6 text-gray-500 dark:text-gray-400">{post.date}</div>
         </div>

@@ -25,9 +25,11 @@ export const getStaticProps: GetStaticProps<MDXRemoteSerializeResult, ContextPar
 
 function About({ about }: Props) {
   const { mdxSource } = about
-  return <div className="pt-10 pb-8 prose dark:prose-dark"><MDXRemote {...mdxSource} /></div>
-
-
+  return (
+    <div className="pt-10 pb-8 xl:max-w-5xl prose dark:prose-dark">
+      <MDXRemote {...mdxSource} />
+    </div>
+  )
 }
 
 export default About
