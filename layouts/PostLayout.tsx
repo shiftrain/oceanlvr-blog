@@ -17,7 +17,7 @@ interface Props {
 }
 
 export default function PostLayout({ children, frontMatter, prev, next }: Props) {
-  const { date, title, tags } = frontMatter
+  const { date, title, tag } = frontMatter
 
   return (
     <SectionContainer>
@@ -27,7 +27,7 @@ export default function PostLayout({ children, frontMatter, prev, next }: Props)
           <PageTitle>{title}</PageTitle>
           {/* @ts-ignore */}
           <Time createAt={date} />
-          <TagList tags={tags as string[]} />
+          <TagList tags={tag as string[]} />
         </div>
         <div className="pt-10 pb-8 xl:max-w-5xl prose dark:prose-dark">{children}</div>
       </>
