@@ -16,7 +16,7 @@ export default function ListLayout({ postsFrontMatter }: Props) {
             {/* @ts-ignore */}
             {post.tag?.map((e, idx) => (
               <>
-                <Link href={`/tags/${e}`} key={`${post.id as string}-${e}`} className="leading-6 mb-2 text-base font-medium text-blue-500 hover:text-blue-600 dark:hover:text-blue-400">{e}</Link>
+                <Link href={`/tags/${e}`} key={`${post.id as string}-${e}`} className="leading-6 mb-2 text-base font-medium blue-link">{e}</Link>
                 {/* @ts-ignore */}
                 {idx !== post.tag?.length - 1 && <span className="pr-2">,</span>}
               </>

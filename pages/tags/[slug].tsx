@@ -1,6 +1,5 @@
 import { GetStaticProps, GetStaticPaths, InferGetStaticPropsType } from 'next'
 import { getAllFilesFrontMatter } from '@/lib/resource'
-import { MDXRemoteSerializeResult } from '@/lib/mdx'
 import ListLayout from '@/layouts/ListLayout'
 
 type ContextParams = {
@@ -12,8 +11,8 @@ type Props = {
   slug: string
 }
 
-export const getStaticProps: GetStaticProps<MDXRemoteSerializeResult, ContextParams> = async ({ params }) => {
-  if (!params) {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  if (!params || !params.slug) {
     return {
       notFound: true
     }
