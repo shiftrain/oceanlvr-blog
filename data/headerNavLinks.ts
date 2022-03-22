@@ -8,7 +8,7 @@ const headerNavLinks = [{
   href: '/about',
   title: 'About',
 }, {
-  href: 'https://www.github.com/oceanlvr',
+  href: 'https://github.com/shiftrain',
   title: 'Github'
 }]
 

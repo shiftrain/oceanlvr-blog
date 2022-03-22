@@ -14,11 +14,11 @@ const Footer = () => {
           }
         </div>
         <div className="mb-4">
-          <span>oceanlvr </span>
+          <span>shiftrain </span>
           <span> • </span>
           <span>© {new Date().getFullYear()}</span>
           <span> • </span>
-          <Link href="/">oceanlvr&apos;s blog</Link>
+          <Link href="/">shiftrain&apos;s blog</Link>
         </div>
       </div>
     </footer>

@@ -1,18 +1,59 @@
 ---
 title: A beginning is the time for taking the most delicate
-author: oceanlvr
+author: shiftrain
 date: '2021-10-04'
 tag: ['intro', 'tag1']
 ---
 
-## oceanlvr
+## shiftrain
 
 A beginning is the time for taking the most delicate care that the balances are correct.
 
 Locate in *shanghai*.
 
-```js
-console.log('hello world')
+```golang
+package raft
+
+import (
+	"bytes"
+	"fmt"
+	"math/rand"
+	"sync"
+	"sync/atomic"
+	"time"
+	"6.824/labrpc"
+)
+
+
+type Raft struct {
+	mu        sync.Mutex          // Lock to protect shared access to this peer's state
+	peers     []*labrpc.ClientEnd // RPC end points of all peers
+	persister *Persister          // Object to hold this peer's persisted state
+	me        int                 // this peer's index into peers[]
+	dead      int32               // set by Kill()
+
+	state       int // 状态
+	currentTerm int //服务器最后一次知道的任期号0++
+	votedFor    int // 为谁投票？
+
+	election_time  *time.Timer // 100-500ms 选举的间隔时间不同
+	heartbeat_time *time.Timer
+
+	commitIndex int // 已知最大的已被commit的日志条目的索引值
+	lastApplied int // 最后被应用到状态机的日志条目索引值0++
+
+	nextIndex  []int // 需要发送的下一个日志条目的索引值
+	matchIndex []int // 已经复制的日志的最高索引值
+
+	logs []LogEntry // 日志条目；
+
+	applyCh chan ApplyMsg
+	applyCo *sync.Cond
+	repliCo []*sync.Cond
+	// Your data here (2A, 2B, 2C).
+	// Look at the paper's Figure 2 for a description of what
+	// state a Raft server must maintain.
+}
 ```
 
 :)

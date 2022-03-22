@@ -13,7 +13,7 @@ const NavBar = () => {
         <Link href="/">
           <div className="flex flex-row items-center justify-between">
             <div className="mr-3">
-              <Image src={Logo} width="50" height="50" alt="logo" />
+              <Image src={Logo} width="60" height="45" alt="logo" />
             </div>
             <div className="hidden h-6 text-2xl font-semibold leading-5 sm:block">
               {siteMetadata.headerTitle}
