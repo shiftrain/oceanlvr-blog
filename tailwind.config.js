@@ -12,7 +12,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        sans: ['Graphik', 'sans-serif'],
+        serif: ['Merriweather', 'serif'],
       },
       typography: (theme) => ({
         DEFAULT: {
@@ -45,7 +46,7 @@ module.exports = {
               color: theme('colors.gray.900'),
             },
             code: {
-              color: theme('colors.pink.500'),
+              color: theme('colors.pink.100'),
               backgroundColor: theme('colors.gray.100'),
               paddingLeft: '4px',
               paddingRight: '4px',
@@ -108,7 +109,8 @@ module.exports = {
               color: theme('colors.gray.100'),
             },
             code: {
-              backgroundColor: theme('colors.gray.800'),
+              color: theme('colors.pink.100'),
+              backgroundColor: theme('#1e293b'),
             },
             hr: {
               borderColor: theme('colors.gray.700')

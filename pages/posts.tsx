@@ -21,6 +21,7 @@ const Posts = ({ postsFrontMatter }: Props) => {
       <h1 className="border-b pb-2 mb-8 text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">All Posts</h1>
       <ListLayout postsFrontMatter={postsFrontMatter} />
     </div>
+
   )
 }
 

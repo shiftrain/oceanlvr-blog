@@ -2,6 +2,8 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import { getAllFilesFrontMatter } from '@/lib/resource'
 import Link from '@/components/Link'
 import ListLayout from '@/layouts/ListLayout'
+import hljs from 'highlight.js'
+import 'highlight.js/styles/dark.css'
 
 type Props = {
   postsFrontMatter: Record<string, unknown>[]

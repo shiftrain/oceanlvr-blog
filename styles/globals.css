@@ -26,3 +26,11 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.prose pre {
+  background-color: #1e293b;/*#1f2937#0f172a
+  /* border: thick double #1e293b; */
+  border-style: groove ;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -2px rgb(0 0 0 / 10%);
+
+}
